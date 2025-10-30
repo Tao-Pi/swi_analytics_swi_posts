@@ -1,0 +1,91 @@
+{
+    "resultType": "DATA_ONLY",
+    "queryObject": {
+        "columns": [
+            {
+                "name": "session_id",
+                "scope": "OBJECT",
+                "context": "SESSION",
+                "lowerLimit": 1,
+                "upperLimit": 5
+            },
+            {
+                "name": "device_fullName",
+                "scope": "OBJECT",
+                "context": "SESSION"
+            },
+            {
+                "name": "device_name",
+                "scope": "OBJECT",
+                "context": "SESSION"
+            },
+            {
+                "name": "device_model",
+                "scope": "OBJECT",
+                "context": "SESSION"
+            },
+            {
+                "name": "device_family",
+                "scope": "OBJECT",
+                "context": "SESSION"
+            },
+            {
+                "name": "device_deviceClass",
+                "scope": "OBJECT",
+                "context": "SESSION"
+            },
+            {
+                "name": "pages_pageImpressions",
+                "columnPeriod": "ANALYSIS",
+                "sortDirection": "DESCENDING",
+                "sortIndex": 1,
+                "scope": "OBJECT",
+                "context": "PAGE",
+                "variant": "NORMAL"
+            }
+        ],
+        "predefinedContainer": {
+            "filters": [
+                {
+                    "name": "time_dynamic",
+                    "connector": "AND",
+                    "filterPredicate": "LIKE",
+                    "value1": "yesterday",
+                    "value2": "",
+                    "context": "NONE",
+                    "caseSensitive": false
+                }
+            ],
+            "containers": [
+                {
+                    "filters": [
+                        {
+                            "name": "page_category_text_1",
+                            "connector": "AND",
+                            "filterPredicate": "LIKE",
+                            "value1": "SWI",
+                            "value2": "",
+                            "context": "PAGE",
+                            "caseSensitive": false
+                        },
+                        {
+                            "name": "page_category_text_1",
+                            "connector": "OR",
+                            "filterPredicate": "LIKE",
+                            "value1": "TVS",
+                            "value2": "",
+                            "context": "PAGE",
+                            "caseSensitive": false
+                        }
+                    ],
+                    "containers": [],
+                    "connector": "AND",
+                    "context": "PAGE",
+                    "inOrNotIn": "IN",
+                    "type": "NORMAL"
+                }
+            ]
+        },
+        "variant": "PIVOT_AS_LIST"
+    }
+}
